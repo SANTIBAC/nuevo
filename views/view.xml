@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_tecnico_tree" model="ir.ui.view">
+            <field name="name">tecnico.tecnico.tree</field>
+            <field name="model">tecnico.tecnico</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Tecnico">
+                    <field name="numero" />
+                    <field name="name" />
+                    <field name="primer_apellido" />
+                    <field name="segundo_apellido" />
+                    <field name="telefono" />
+                    <field name="activo" />
+                    <field name="genero" />
+                    <field name="edad" />
+                    <field name="fecha_nacimiento" />
+                    <field name="nacionalidad" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tecnico_form" model="ir.ui.view">
+            <field name="name">tecnico.tecnico.form</field>
+            <field name="model">tecnico.tecnico</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Tecnico">
+                    <sheet>
+                        <field name="foto" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" required="1" placeholder="Nombre" /></td>
+                                        <td style="padding-right:10px;"><field name="primer_apellido" placeholder="Apellido1" /></td>
+                                        <td style="padding-right:10px;"><field name="segundo_apellido" placeholder="Apellido2" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="2">
+                            <page name="personal_information"
+                                string="Información Personal">
+                                <group col="4" colspan="2"
+                                    name="personal_detail">
+                                    <field name="numero"/>
+                                    <field name="genero" />
+                                    <field name="edad" />
+                                    <field name="fecha_nacimiento" />
+                                    <field name="nacionalidad" />
+                                    <field name="telefono" />
+                                    <field name="activo" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_cliente_tree" model="ir.ui.view">
+            <field name="name">cliente.cliente.tree</field>
+            <field name="model">cliente.cliente</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Cliente">
+                    <field name="numeroC" />
+                    <field name="fecha" />
+                    <field name="name" />
+                    <field name="primer_apellido" />
+                    <field name="segundo_apellido" />
+                    <field name="telefono" />
+                    <field name="calle" />
+                    <field name="numero" />
+                    <field name="portal" />
+                    <field name="escalera" />
+                    <field name="planta" />
+                    <field name="puerta" />
+                    <field name="asignado" />
+                    <field name="estado" />
+                    <field name="comentario" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_cliente_form" model="ir.ui.view">
+            <field name="name">cliente.cliente.form</field>
+            <field name="model">cliente.cliente</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" required="1" placeholder="Nombre" /></td>
+                                        <td style="padding-right:10px;"><field name="primer_apellido" placeholder="Apellido1" /></td>
+                                        <td style="padding-right:10px;"><field name="segundo_apellido" placeholder="Apellido2" /></td>
+                                    </tr>                                       
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="2">
+                            <page name="personal_information"
+                                string="Información del Servico">
+                                <group col="4" colspan="2"
+                                    name="personal_detail">
+                                    <field name="numeroC" />
+                                    <field name="calle" />
+                                    <field name="numero" />
+                                    <field name="portal" />
+                                    <field name="escalera" />
+                                    <field name="planta" />
+                                    <field name="puerta" />
+                                    <field name="comentario" />
+                                    <field name="fecha" />
+                                    <field name="asignado" />
+                                    <field name="telefono" />
+                                    <field name="estado" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_tecnicos">
+            <field name="name">Tecnicos</field>
+            <field name="res_model">tecnico.tecnico</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea un nuevo tecnico</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_clientes">
+            <field name="name">Clientes</field>
+            <field name="res_model">cliente.cliente</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea un nuevo cliente</p>
+            </field>
+        </record>
+        <menuitem name="Servicio"
+            id="menu_servicio"
+            groups="project.group_project_manager,project.group_project_user"
+            web_icon="servicios,static/description/icon.png"/>
+        <menuitem id="menu_tecnico" name="Tecnicos" parent="menu_servicio"  
+                  action="action_view_tecnicos"/>
+        <menuitem id="menu_cliente" name="Clientes" parent="menu_servicio"
+            action="action_view_clientes"/>
+    </data>
+</odoo>
