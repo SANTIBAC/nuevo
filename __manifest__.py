@@ -6,7 +6,7 @@
     'version': '13.0.0.0.0',
     'description': """Este módulo nos permitirá gestionar la asignación de servicios""",
     'author': 'Santiago Bacale Ortiz',
-    'company': 'Practicas Ultimo CAmbio',
+    'company': 'Practicas',
     'website': ' ',
     'category': 'Tools',
     'depends': ['base'],
